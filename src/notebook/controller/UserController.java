@@ -1,7 +1,10 @@
 package notebook.controller;
 
 import notebook.model.User;
+
 import notebook.model.repository.GBRepository;
+import notebook.model.repository.impl.UserRepository;
+import notebook.view.UserView;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,4 +35,21 @@ public class UserController {
         update.setId(Long.parseLong(userId));
         repository.update(Long.parseLong(userId), update);
     }
+
+    public List<User> readAll(){
+        return repository.findAll();
+    }
+
+    public void deleteUser(Long id){
+        repository.delete(id);
+    }
+
+    public String promptUsers(String message){
+        return repository.prompt(message);
+    }
+
+    public User createUserControl(){
+        return repository.createUser();
+    }
+
 }
